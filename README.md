@@ -6,6 +6,8 @@
 
 macOS menu bar usage meter for OpenAI Codex.
 
+![Codex-Usage menu bar preview](docs/menu-bar-preview.png)
+
 Codex-Usage reads local Codex session logs from `~/.codex` and keeps remaining
 5-hour and weekly quota visible directly in the menu bar. You do not need to
 click the menu bar item to see the numbers. It is local-only and does not read

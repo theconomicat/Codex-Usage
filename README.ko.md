@@ -2,6 +2,8 @@
 
 macOS 메뉴바에서 OpenAI Codex 사용 가능량을 보여주는 작은 앱입니다.
 
+![Codex-Usage 메뉴바 미리보기](docs/menu-bar-preview.png)
+
 Codex-Usage는 이 Mac의 로컬 Codex 세션 로그를 읽어서 5시간 / 1주 사용 가능량을 원형 게이지로 표시합니다. 인증 토큰은 읽지 않습니다.
 
 ## 화면
