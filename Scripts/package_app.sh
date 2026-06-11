@@ -6,13 +6,15 @@ APP_NAME="Codex-Usage"
 EXEC_NAME="CodexUsage"
 BUILD_DIR="$ROOT_DIR/.build/release"
 APP_DIR="$ROOT_DIR/$APP_NAME.app"
+ICON_PATH="$ROOT_DIR/Assets/AppIcon.icns"
 
 cd "$ROOT_DIR"
 swift build -c release
 
 rm -rf "$APP_DIR"
-mkdir -p "$APP_DIR/Contents/MacOS"
+mkdir -p "$APP_DIR/Contents/MacOS" "$APP_DIR/Contents/Resources"
 cp "$BUILD_DIR/$EXEC_NAME" "$APP_DIR/Contents/MacOS/$EXEC_NAME"
+cp "$ICON_PATH" "$APP_DIR/Contents/Resources/AppIcon.icns"
 
 cat > "$APP_DIR/Contents/Info.plist" <<'PLIST'
 <?xml version="1.0" encoding="UTF-8"?>
@@ -29,6 +31,8 @@ cat > "$APP_DIR/Contents/Info.plist" <<'PLIST'
   <string>Codex-Usage</string>
   <key>CFBundlePackageType</key>
   <string>APPL</string>
+  <key>CFBundleIconFile</key>
+  <string>AppIcon</string>
   <key>CFBundleShortVersionString</key>
   <string>0.1.0</string>
   <key>CFBundleVersion</key>
