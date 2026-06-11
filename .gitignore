@@ -1,0 +1,8 @@
+.build/
+.swiftpm/
+Codex-Usage.app/
+Assets/AppIcon.iconset/
+Assets/AppIcon.icns
+work/
+outputs/
+.DS_Store
