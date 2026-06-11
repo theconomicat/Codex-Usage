@@ -166,7 +166,7 @@ final class SnapshotFormatter {
     func menuLine(_ kind: UsageKind, _ window: UsageWindow) -> String {
         let label = kind == .fiveHour ? text.fiveHourMenu : text.weekMenu
         let reset = window.resetsAt.map { "\(text.resetPrefix) \(compactDuration(until: $0))\(text.resetSuffix.isEmpty ? "" : " \(text.resetSuffix)")" } ?? "\(text.resetPrefix) --"
-        return "\(label)     \(rounded(window.remainingPercent))% · \(reset)"
+        return "\(label) · \(rounded(window.remainingPercent))% · \(reset)"
     }
 
     func shortDate(_ date: Date) -> String {

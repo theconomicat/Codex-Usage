@@ -25,8 +25,8 @@ Left: 5-hour window. Right: weekly window.
 Clicking the item opens a compact menu:
 
 ```text
-5h     79% · reset 2h
-1w     96% · reset 6d
+5h · 79% · reset 2h
+1w · 96% · reset 6d
 
 Refresh
 Quit Codex-Usage

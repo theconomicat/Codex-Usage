@@ -18,8 +18,8 @@ Codex-Usage는 이 Mac의 로컬 Codex 세션 로그를 읽어서 5시간 / 1주
 클릭하면 간단한 메뉴가 열립니다.
 
 ```text
-5h     79% · reset 2h
-1w     96% · reset 6d
+5h · 79% · reset 2h
+1w · 96% · reset 6d
 
 Refresh
 Quit Codex-Usage
