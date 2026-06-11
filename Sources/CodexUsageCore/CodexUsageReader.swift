@@ -7,7 +7,7 @@ public final class CodexUsageReader: @unchecked Sendable {
     public init(fileManager: FileManager = .default) {
         self.fileManager = fileManager
         self.decoder = JSONDecoder()
-        self.decoder.dateDecodingStrategy = .iso8601
+        self.decoder.dateDecodingStrategy = .custom(Self.decodeISO8601Date)
     }
 
     public func latestSnapshot(codexDirectory: URL = defaultCodexDirectory()) throws -> CodexUsageSnapshot {
@@ -34,6 +34,28 @@ public final class CodexUsageReader: @unchecked Sendable {
 
     public static func defaultCodexDirectory() -> URL {
         FileManager.default.homeDirectoryForCurrentUser.appendingPathComponent(".codex", isDirectory: true)
+    }
+
+    private static func decodeISO8601Date(from decoder: Decoder) throws -> Date {
+        let container = try decoder.singleValueContainer()
+        let value = try container.decode(String.self)
+
+        let fractionalFormatter = ISO8601DateFormatter()
+        fractionalFormatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+        if let date = fractionalFormatter.date(from: value) {
+            return date
+        }
+
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime]
+        if let date = formatter.date(from: value) {
+            return date
+        }
+
+        throw DecodingError.dataCorruptedError(
+            in: container,
+            debugDescription: "Invalid ISO8601 date: \(value)"
+        )
     }
 
     private func sessionLogFiles(in codexDirectory: URL) -> [URL] {
