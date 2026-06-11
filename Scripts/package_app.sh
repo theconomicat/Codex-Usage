@@ -9,12 +9,15 @@ APP_DIR="$ROOT_DIR/$APP_NAME.app"
 ICON_PATH="$ROOT_DIR/Assets/AppIcon.icns"
 
 cd "$ROOT_DIR"
-swift Scripts/generate_icon.swift
 swift build -c release
 
 rm -rf "$APP_DIR"
 mkdir -p "$APP_DIR/Contents/MacOS" "$APP_DIR/Contents/Resources"
 cp "$BUILD_DIR/$EXEC_NAME" "$APP_DIR/Contents/MacOS/$EXEC_NAME"
+if [[ ! -f "$ICON_PATH" ]]; then
+  echo "Missing $ICON_PATH" >&2
+  exit 1
+fi
 cp "$ICON_PATH" "$APP_DIR/Contents/Resources/AppIcon.icns"
 
 cat > "$APP_DIR/Contents/Info.plist" <<'PLIST'

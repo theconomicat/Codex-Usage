@@ -2,6 +2,8 @@
 
 ![Codex-Usage icon](Assets/AppIcon.svg)
 
+[한국어 README](README.ko.md)
+
 macOS menu bar usage meter for OpenAI Codex.
 
 Codex-Usage reads local Codex session logs from `~/.codex` and keeps remaining
@@ -64,14 +66,22 @@ open ./Codex-Usage.app
 
 To keep it installed, move `Codex-Usage.app` to `/Applications`.
 
-## Build A Release Zip
+## Releases
+
+Pushing a version tag builds the app on GitHub Actions and uploads
+`Codex-Usage-macos.zip` to a GitHub Release automatically.
+
+```bash
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+To build the same zip locally:
 
 ```bash
 ./Scripts/package_app.sh
 ditto -c -k --norsrc --keepParent Codex-Usage.app Codex-Usage-macos.zip
 ```
-
-Upload `Codex-Usage-macos.zip` to a GitHub Release.
 
 ## Development
 
