@@ -51,7 +51,7 @@ Quit Codex-Usage
 - 이 Mac에서 Codex 앱 또는 CLI를 사용한 기록
 
 ```bash
-git clone https://github.com/YOUR_NAME/Codex-Usage.git
+git clone https://github.com/theconomicat/Codex-Usage.git
 cd Codex-Usage
 ./Scripts/package_app.sh
 open ./Codex-Usage.app

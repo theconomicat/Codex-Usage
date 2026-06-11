@@ -60,7 +60,7 @@ Requirements:
 Build and open the app:
 
 ```bash
-git clone https://github.com/YOUR_NAME/Codex-Usage.git
+git clone https://github.com/theconomicat/Codex-Usage.git
 cd Codex-Usage
 ./Scripts/package_app.sh
 open ./Codex-Usage.app
