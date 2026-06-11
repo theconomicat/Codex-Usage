@@ -1,7 +1,5 @@
 # Codex-Usage
 
-![Codex-Usage icon](Assets/AppIcon.svg)
-
 [한국어 README](README.ko.md)
 
 macOS menu bar usage meter for OpenAI Codex.
