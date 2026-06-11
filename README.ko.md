@@ -6,6 +6,12 @@ macOS 메뉴바에서 OpenAI Codex 사용 가능량을 보여주는 작은 앱�
 
 Codex-Usage는 이 Mac의 로컬 Codex 세션 로그를 읽어서 5시간 / 1주 사용 가능량을 원형 게이지로 표시합니다. 인증 토큰은 읽지 않습니다.
 
+## 다운로드
+
+[최신 macOS zip 다운로드](https://github.com/theconomicat/Codex-Usage/releases/latest/download/Codex-Usage-macos.zip)
+
+압축을 풀고 `Codex-Usage.app`을 열면 됩니다. macOS가 첫 실행을 막으면 앱을 우클릭한 뒤 **Open**을 선택하세요.
+
 ## 화면
 
 메뉴바에는 원형 게이지 두 개만 표시됩니다.

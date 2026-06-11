@@ -11,6 +11,12 @@ Codex-Usage reads local Codex session logs from `~/.codex` and keeps remaining
 click the menu bar item to see the numbers. It is local-only and does not read
 Codex auth tokens.
 
+## Download
+
+[Download the latest macOS zip](https://github.com/theconomicat/Codex-Usage/releases/latest/download/Codex-Usage-macos.zip)
+
+Unzip it, then open `Codex-Usage.app`. If macOS blocks the first launch, right-click the app and choose **Open**.
+
 ## What It Shows
 
 The menu bar item is two compact circular gauges. The number inside each ring is
