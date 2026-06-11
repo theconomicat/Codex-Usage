@@ -1,6 +1,7 @@
 import AppKit
 import CodexUsageCore
 import Foundation
+import ServiceManagement
 
 if CommandLine.arguments.contains("--print") {
     do {
@@ -100,6 +101,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
 
         menu.addItem(.separator())
+        let launchAtLoginItem = NSMenuItem(
+            title: AppText.current.launchAtLogin,
+            action: #selector(toggleLaunchAtLogin),
+            keyEquivalent: ""
+        )
+        launchAtLoginItem.target = self
+        launchAtLoginItem.state = launchAtLoginState
+        menu.addItem(launchAtLoginItem)
+
         let refreshItem = NSMenuItem(title: AppText.current.refresh, action: #selector(refresh), keyEquivalent: "r")
         refreshItem.target = self
         menu.addItem(refreshItem)
@@ -114,6 +124,30 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     @objc private func quit() {
         NSApp.terminate(nil)
     }
+
+    @objc private func toggleLaunchAtLogin() {
+        do {
+            if SMAppService.mainApp.status == .enabled {
+                try SMAppService.mainApp.unregister()
+            } else {
+                try SMAppService.mainApp.register()
+            }
+            statusItem.menu = makeMenu()
+        } catch {
+            showLaunchAtLoginError(error)
+        }
+    }
+
+    private var launchAtLoginState: NSControl.StateValue {
+        SMAppService.mainApp.status == .enabled ? .on : .off
+    }
+
+    private func showLaunchAtLoginError(_ error: Error) {
+        let alert = NSAlert(error: error)
+        alert.messageText = "Could not update Launch at Login"
+        alert.informativeText = "Move Codex-Usage.app to /Applications, then try again."
+        alert.runModal()
+    }
 }
 
 enum UsageKind {
@@ -125,6 +159,7 @@ struct AppText {
     let fiveHourMenu: String
     let weekMenu: String
     let remainingPrefix: String
+    let launchAtLogin: String
     let refresh: String
     let quit: String
     let resetPrefix: String
@@ -136,6 +171,7 @@ struct AppText {
             fiveHourMenu: "5h",
             weekMenu: "1w",
             remainingPrefix: "Codex remaining",
+            launchAtLogin: "Launch at Login",
             refresh: "Refresh",
             quit: "Quit Codex-Usage",
             resetPrefix: "reset",

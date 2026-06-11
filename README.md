@@ -34,6 +34,7 @@ Clicking the item opens a compact menu:
 5h · 79% · reset 2h
 1w · 96% · reset 6d
 
+Launch at Login
 Refresh
 Quit Codex-Usage
 ```

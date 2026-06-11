@@ -29,6 +29,7 @@ Codex-Usage는 이 Mac의 로컬 Codex 세션 로그를 읽어서 5시간 / 1주
 5h · 79% · reset 2h
 1w · 96% · reset 6d
 
+Launch at Login
 Refresh
 Quit Codex-Usage
 ```
