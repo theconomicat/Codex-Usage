@@ -116,6 +116,9 @@ open ./Codex-Usage.app
 The Codex local JSONL format is not a public API, so this project treats parsing
 as best-effort and keeps the reader small and easy to update.
 
+If a reset time passes before Codex writes a fresh log entry, Codex-Usage resets
+that window locally instead of showing stale usage.
+
 ## License
 
 MIT

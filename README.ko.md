@@ -94,6 +94,8 @@ swift run CodexUsage -- --print
 
 Codex 로컬 JSONL 포맷은 공개 API가 아닙니다. 그래서 파서는 작고 고치기 쉽게 유지합니다.
 
+Codex가 새 로그를 쓰기 전에 reset 시간이 지나면, Codex-Usage가 해당 창을 로컬에서 자동으로 초기화합니다.
+
 ## 라이선스
 
 MIT

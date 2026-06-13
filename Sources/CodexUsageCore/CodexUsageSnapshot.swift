@@ -20,6 +20,16 @@ public struct CodexUsageSnapshot: Equatable, Sendable {
         self.planType = planType
         self.limitID = limitID
     }
+
+    public func normalized(at now: Date = Date()) -> CodexUsageSnapshot {
+        CodexUsageSnapshot(
+            timestamp: timestamp,
+            primary: primary.normalized(at: now),
+            secondary: secondary.normalized(at: now),
+            planType: planType,
+            limitID: limitID
+        )
+    }
 }
 
 public struct UsageWindow: Equatable, Sendable {
@@ -34,7 +44,25 @@ public struct UsageWindow: Equatable, Sendable {
     }
 
     public var remainingPercent: Double {
-        max(0, 100 - usedPercent)
+        max(0, min(100, 100 - usedPercent))
+    }
+
+    public func normalized(at now: Date = Date()) -> UsageWindow {
+        guard
+            let resetsAt,
+            windowMinutes > 0,
+            resetsAt <= now
+        else {
+            return self
+        }
+
+        let windowSeconds = TimeInterval(windowMinutes * 60)
+        let elapsedWindows = floor(now.timeIntervalSince(resetsAt) / windowSeconds) + 1
+        return UsageWindow(
+            usedPercent: 0,
+            windowMinutes: windowMinutes,
+            resetsAt: resetsAt.addingTimeInterval(elapsedWindows * windowSeconds)
+        )
     }
 }
 

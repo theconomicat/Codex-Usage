@@ -10,7 +10,7 @@ public final class CodexUsageReader: @unchecked Sendable {
         self.decoder.dateDecodingStrategy = .custom(Self.decodeISO8601Date)
     }
 
-    public func latestSnapshot(codexDirectory: URL = defaultCodexDirectory()) throws -> CodexUsageSnapshot {
+    public func latestSnapshot(codexDirectory: URL = defaultCodexDirectory(), now: Date = Date()) throws -> CodexUsageSnapshot {
         var isDirectory: ObjCBool = false
         guard fileManager.fileExists(atPath: codexDirectory.path, isDirectory: &isDirectory), isDirectory.boolValue else {
             throw CodexUsageError.codexDirectoryMissing(codexDirectory)
@@ -29,7 +29,7 @@ public final class CodexUsageReader: @unchecked Sendable {
             throw CodexUsageError.noUsageEventsFound(codexDirectory)
         }
 
-        return latest
+        return latest.normalized(at: now)
     }
 
     public static func defaultCodexDirectory() -> URL {
